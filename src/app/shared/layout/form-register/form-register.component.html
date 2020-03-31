@@ -1,0 +1,50 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="onSubmitForm(form.value);">
+    <div class="form-group">
+      <label for="fullname">Full name</label>
+      <input required [(ngModel)]="fullName" #fullname="ngModel" type="text" class="form-control" id="inputFullname"
+        placeholder="Dieu Nguyen Ha" name="fullName">
+      <div *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+        <div *ngIf="fullname.errors.required">
+          Full name is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input required [(ngModel)]="emailAdress" #email="ngModel" name="email" type="text" class="form-control" id="inputEmail"
+        placeholder="dieu.nguyen@asiantech.vn">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors.required">
+          Email is required.
+        </div>
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input ngModel name="password" type="password" class="form-control" id="inputPassword">
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input ngModel name="confirmpassword" type="password" class="form-control" id="inputConfirmPassword">
+      </div>
+      <fieldset ngModelGroup="address">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="streetName">State</label>
+            <input ngModel name="streetName" type="text" class="form-control" id="inputStreetName"
+              placeholder="Phan Hanh Son">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="city">City</label>
+            <input ngModel name="city" type="text" class="form-control" id="inputCity" placeholder="Da Nang">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="country">Country</label>
+            <input ngModel name="country" type="text" class="form-control" id="inputCountry" placeholder="Viet Nam">
+          </div>
+        </div>
+      </fieldset>
+      <button class="btn btn-primary" [disabled]="form.invalid">Register</button>
+  </form>
+</div>
