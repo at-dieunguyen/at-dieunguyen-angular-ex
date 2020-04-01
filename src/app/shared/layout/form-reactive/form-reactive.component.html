@@ -1,17 +1,16 @@
 <div class="container">
   <form [formGroup]="regFrom" (ngSubmit)="onSubmit()">
+    <h1>Form Register</h1>
     <div class="form-group">
       <label for="fullname">Full name</label>
       <input required formControlName="fullName" type="text" class="form-control" id="inputFullname"
         placeholder="Dieu Nguyen Ha" name="fullName">
-      <div
-        *ngIf="regFrom.controls.fullName.invalid && (regFrom.controls.fullName.dirty || regFrom.controls.fullName.touched)"
-        class="alert alert-danger">
-        <div *ngIf="regFrom.controls.fullName?.errors.required">
-          Full name is required.
+      <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert alert-danger">
+        <div *ngIf="fullName?.errors.required">
+          Full name required!
         </div>
-        <div *ngIf="regFrom.controls.fullName.errors?.minlength">
-          Full name must be length > 10
+        <div *ngIf="fullName?.errors.minlength">
+          Name length min 10
         </div>
       </div>
     </div>
@@ -19,35 +18,43 @@
       <label for="email">Email</label>
       <input required formControlName="emailAddress" name="email" type="text" class="form-control" id="inputEmail"
         placeholder="dieu.nguyen@asiantech.vn">
-      <div
-        *ngIf="regFrom.controls.emailAddress.invalid && (regFrom.controls.emailAddress.dirty || regFrom.controls.emailAddress.touched)"
-        class="alert alert-danger">
-        <div *ngIf="regFrom.controls.emailAddress?.errors.required">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email?.errors.required">
           Email is required.
         </div>
-        <div *ngIf="regFrom.controls.emailAddress?.errors?.email">
+        <div *ngIf="email?.errors?.email">
           Email not right!
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input required formControlName="password" type="password" class="form-control" id="inputPassword">
-    </div>
-    <div class="form-group">
-      <label for="confirmPass">Confirm Password</label>
-      <input required formControlName="confirmPassword" type="password" class="form-control" id="inputConfirmPassword">
-      <div class="col alert alert-danger" role="alert" *ngIf="regFrom.hasError('passwordnotmatch', ['pw']) &&
-      regFrom.get('pw').touched">
-        Password does not match!
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="confirmPass">Password</label>
+        <input type="password" name="confirmPassword" class="form-control" formControlName="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          Password is required!
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="confirmPass">Comfirm Password</label>
+        <input type="password" name="confirmPass" class="form-control" formControlName="confirmPassword">
+        <div *ngIf="confirmPass.invalid && (confirmPass.dirty || confirmPass.touched)" class="alert alert-danger">
+          Confirm password is required!
+        </div>
+        <div *ngIf="regFrom.errors && (confirmPass.dirty || regFrom.touched)" class="alert alert-danger">
+          Not match password!
+        </div>
       </div>
     </div>
-    <div class="form-group" formArrayName="skills">
+    <div class="form-group ">
       <label>Skills</label>
-      <input type="text">
-       <button (click)="addSkill()">Add Skills</button>
-      <div *ngFor="let skill of skills.controls; let i=index">
-          <input type="text" [formControlName]="i" class="form-control">
+      <div class="row">
+        <div *ngFor="let skill of skills.controls; let i=index" class="col-md-4">
+          <input required type="text" class="form-control" formControlName="i">
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary" (click)="addSkill()">Add skill</button>
+        </div>
       </div>
     </div>
     <button class="btn btn-primary" [disabled]="regFrom.invalid">Register</button>
