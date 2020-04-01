@@ -12,7 +12,6 @@ export class FormReactiveComponent implements OnInit {
 
 
   regFrom: FormGroup;
-  // skills: any;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -27,7 +26,8 @@ export class FormReactiveComponent implements OnInit {
       }),
       skills: this.fb.array([
         this.fb.control('')
-      ])
+      ]
+      )
     });
 
   }
@@ -35,13 +35,15 @@ export class FormReactiveComponent implements OnInit {
   onSubmit() {
     console.log(this.regFrom);
   }
-  getskills(){
+
+  addSkill() {
+    this.skills.push(this.fb.control(''));
+  }
+
+  get skills(){
     return this.regFrom.get('skills') as FormArray;
   }
 
-  addSkills() {
-    this.skills.push(this.fb.control(''));
-  }
 }
 
 export function comparePassword(c: AbstractControl) {
