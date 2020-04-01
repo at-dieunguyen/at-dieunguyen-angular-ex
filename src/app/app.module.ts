@@ -6,17 +6,23 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/layout/header/header.component';
 import { FooterComponent } from './shared/layout/footer/footer.component';
 import { FormRegisterComponent } from './shared/layout/form-register/form-register.component';
-import { FormsModule } from '@angular/forms';@NgModule({
+import { FormsModule } from '@angular/forms';
+import { from } from 'rxjs';
+import { FormReactiveComponent } from './shared/layout/form-reactive/form-reactive.component';
+import { ReactiveFormsModule } from '@angular/forms';
+@NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    FormRegisterComponent
+    FormRegisterComponent,
+    FormReactiveComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

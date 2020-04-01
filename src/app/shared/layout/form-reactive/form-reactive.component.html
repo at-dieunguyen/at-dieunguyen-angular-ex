@@ -1,0 +1,57 @@
+<div class="container">
+  <form [formGroup]="regFrom" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="fullname">Full name</label>
+      <input required formControlName="fullName" type="text" class="form-control" id="inputFullname"
+        placeholder="Dieu Nguyen Ha" name="fullName">
+      <div
+        *ngIf="regFrom.controls.fullName.invalid && (regFrom.controls.fullName.dirty || regFrom.controls.fullName.touched)"
+        class="alert alert-danger">
+        <div *ngIf="regFrom.controls.fullName?.errors.required">
+          Full name is required.
+        </div>
+        <div *ngIf="regFrom.controls.fullName.errors?.minlength">
+          Full name must be length > 10
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input required formControlName="emailAddress" name="email" type="text" class="form-control" id="inputEmail"
+        placeholder="dieu.nguyen@asiantech.vn">
+      <div
+        *ngIf="regFrom.controls.emailAddress.invalid && (regFrom.controls.emailAddress.dirty || regFrom.controls.emailAddress.touched)"
+        class="alert alert-danger">
+        <div *ngIf="regFrom.controls.emailAddress?.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="regFrom.controls.emailAddress?.errors?.email">
+          Email not right!
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input required formControlName="password" type="password" class="form-control" id="inputPassword">
+    </div>
+    <div class="form-group">
+      <label for="confirmPass">Confirm Password</label>
+      <input required formControlName="confirmPassword" type="password" class="form-control" id="inputConfirmPassword">
+      <div class="col alert alert-danger" role="alert" *ngIf="regFrom.hasError('passwordnotmatch', ['pw']) &&
+      regFrom.get('pw').touched">
+        Password does not match!
+      </div>
+    </div>
+    <div class="form-group" formArrayName="skills">
+      <h3>Skills</h3> <button (click)="addSkills()">Add Alias</button>
+
+      <div *ngFor="let skill of skills.controls; let i=index">
+        <label>
+          Skills:
+          <input type="text" [formControlName]="i">
+        </label>
+      </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="regFrom.invalid">Register</button>
+  </form>
+</div>
