@@ -1,0 +1,62 @@
+<div class="container">
+  <form [formGroup]="regFrom" (ngSubmit)="onSubmit()">
+    <h1>Form Register</h1>
+    <div class="form-group">
+      <label for="fullname">Full name</label>
+      <input required formControlName="fullName" type="text" class="form-control" id="inputFullname"
+        placeholder="Dieu Nguyen Ha" name="fullName">
+      <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="alert alert-danger">
+        <div *ngIf="fullName?.errors.required">
+          Full name required!
+        </div>
+        <div *ngIf="fullName?.errors.minlength">
+          Name length min 10
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input required formControlName="emailAddress" name="email" type="text" class="form-control" id="inputEmail"
+        placeholder="dieu.nguyen@asiantech.vn">
+      <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email?.errors.required">
+          Email is required.
+        </div>
+        <div *ngIf="email?.errors?.email">
+          Email not right!
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="confirmPass">Password</label>
+        <input type="password" name="confirmPassword" class="form-control" formControlName="password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          Password is required!
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="confirmPass">Comfirm Password</label>
+        <input type="password" name="confirmPass" class="form-control" formControlName="confirmPassword">
+        <div *ngIf="confirmPass.invalid && (confirmPass.dirty || confirmPass.touched)" class="alert alert-danger">
+          Confirm password is required!
+        </div>
+        <div *ngIf="regFrom.errors && (confirmPass.dirty || regFrom.touched)" class="alert alert-danger">
+          Not match password!
+        </div>
+      </div>
+    </div>
+    <div class="form-group ">
+      <label>Skills</label>
+      <div class="row">
+        <div *ngFor="let skill of skills.controls; let i=index" class="col-md-4">
+          <input required type="text" class="form-control" formControlName="i">
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-primary" (click)="addSkill()">Add skill</button>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" [disabled]="regFrom.invalid">Register</button>
+  </form>
+</div>
