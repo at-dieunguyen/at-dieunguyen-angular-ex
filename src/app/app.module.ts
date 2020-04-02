@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { FormReactiveComponent } from './shared/layout/form-reactive/form-reactive.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './shared/layout/home/home.component';
+import { NewComponent } from './shared/layout/new/new.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     FormRegisterComponent,
     FormReactiveComponent,
+    HomeComponent,
+    NewComponent,
   ],
   imports: [
     BrowserModule,
