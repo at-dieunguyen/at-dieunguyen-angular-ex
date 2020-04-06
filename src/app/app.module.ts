@@ -12,6 +12,10 @@ import { FormReactiveComponent } from './shared/layout/form-reactive/form-reacti
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './shared/layout/home/home.component';
 import { NewComponent } from './shared/layout/new/new.component';
+import { AccountComponent } from './shared/layout/account/account.component';
+import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
+import { ProfileComponent } from './shared/layout/profile/profile.component';
+import { LoginComponent } from './shared/layout/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +25,10 @@ import { NewComponent } from './shared/layout/new/new.component';
     FormReactiveComponent,
     HomeComponent,
     NewComponent,
+    AccountComponent,
+    DashboardComponent,
+    ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
