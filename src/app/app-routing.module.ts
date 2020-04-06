@@ -3,12 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NewComponent } from './shared/layout/new/new.component';
 import { HomeComponent } from './shared/layout/home/home.component';
+import { AccountComponent } from './shared/layout/account/account.component';
+import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
+import { ProfileComponent } from './shared/layout/profile/profile.component';
+import { AccountGuard } from './shared/layout/account/account.guard';
+import { LoginComponent } from './shared/layout/login/login.component';
+import { CanDeactivateProfile } from './shared/layout/profile/profile.candeactive';
+import { ProfileResolver } from './shared/layout/profile/profile.resolve';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    redirectTo: '/home',
+    pathMatch: 'full'
   },
   {
     path: 'home',
@@ -16,7 +24,29 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: NewComponent
+    component: NewComponent,
+  },
+  {
+    path: 'account',
+    component: AccountComponent,
+    canActivate: [AccountGuard],
+    canActivateChild: [AccountGuard],
+    children: [{
+      path: 'dashboard',
+      component: DashboardComponent
+    },
+    {
+      path: 'profile',
+      component: ProfileComponent,
+      canDeactivate: [CanDeactivateProfile],
+      resolve: {
+        userData: ProfileResolver
+      }
+    }]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
