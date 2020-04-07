@@ -16,7 +16,8 @@ import { AccountComponent } from './shared/layout/account/account.component';
 import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
 import { ProfileComponent } from './shared/layout/profile/profile.component';
 import { LoginComponent } from './shared/layout/login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorInterCeptor } from './shared/intercepter/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthorInterCeptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
