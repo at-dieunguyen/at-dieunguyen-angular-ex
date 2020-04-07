@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'account2',
     canActivate: [AccountGuard2],
     loadChildren: () => import('./shared/layout/account2/account2.module').then(m => m.Account2Module)
+  },
+  {
+    path: 'http',
+    loadChildren: () => import('./shared/layout/http/http.module').then(m => m.HttpModule)
   }
 
 ];

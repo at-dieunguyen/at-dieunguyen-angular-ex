@@ -24,7 +24,10 @@ export class Account2Component implements OnInit {
     this.apiSer.getAssets('../../../../assets/events.json').subscribe(e => {
       console.log(e);
     });
-
+    this.apiSer.get(ENDPOINT.users).subscribe(e => {
+      // console.log(e);
+      // this.data = e.data;
+    });
   }
 
   logout(){

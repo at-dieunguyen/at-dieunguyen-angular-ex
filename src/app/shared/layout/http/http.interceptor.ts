@@ -10,8 +10,9 @@ export class AuthorInterCeptor implements HttpInterceptor {
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
+    console.log(req);
     const authRq = req.clone({
-      headers: req.headers.set('Authorization', 'nhdieu')
+      headers: req.headers.set('Authorization', 'dieunguyen')
     });
     return next.handle(authRq);
   }
