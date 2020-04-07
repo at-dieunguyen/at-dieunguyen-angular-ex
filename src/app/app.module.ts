@@ -16,6 +16,8 @@ import { AccountComponent } from './shared/layout/account/account.component';
 import { DashboardComponent } from './shared/layout/dashboard/dashboard.component';
 import { ProfileComponent } from './shared/layout/profile/profile.component';
 import { LoginComponent } from './shared/layout/login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,8 @@ import { LoginComponent } from './shared/layout/login/login.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>Account2 page</h1>
+  <a routerLink="/account2/profile2">Profile2</a><br>
+  <a routerLink="/account2/dashboard2">Dashboard2</a><br>
+  <button class="btn btn-primary" (click)="logout()">Log out</button>
+
+  <ul *ngFor="let dt of data">
+    <li>Email: {{ dt.email }}</li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>
