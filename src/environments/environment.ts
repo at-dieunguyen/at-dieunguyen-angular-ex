@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api: 'https://reqres.in/api/'
+  api: 'https://reqres.in/api/',
+  envTest: 'Local'
 };
 
 /*
