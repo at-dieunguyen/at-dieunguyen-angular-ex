@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
     this.auth.isLogin = true;
-    this.router.navigateByUrl('account')
+    this.router.navigateByUrl('account2')
     // console.log(this.auth.isLogin)
   }
 
