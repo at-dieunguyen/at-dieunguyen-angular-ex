@@ -81,7 +81,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": false,
-              "baseHref": "/test/"
+              "baseHref": "/ng-angular-staging/"
             }
           }
         },
